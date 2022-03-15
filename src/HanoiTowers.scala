@@ -1,4 +1,5 @@
 import scala.collection.mutable
+import scala.io.StdIn.readLine
 
 class HanoiTowers {
   var firstStack  = mutable.Stack[Ring]()
@@ -28,12 +29,24 @@ class HanoiTowers {
       println("Please chose different move, this one is invalid")
     }
   }
-  def checkIfMoveIsValid(ring1: Ring, ring2: Ring): Boolean={
-    if(ring1.width < ring2.width) {
-      true
-    }else{
-      //println("Invalid move!")
-      false
+  def checkIfMoveIsValid(ring1: Ring, ring2: Ring): Boolean= {
+    ring1.width < ring2.width
+  }
+
+  def checkWin(towerSize: Int): Boolean ={
+    thirdStack.size != towerSize
+  }
+  def play() ={
+    var x = ""
+    while(x != "q"){
+      val towerSize = readLine("Enter tower size: ").toInt
+      createFirstStack(towerSize)
+      while(checkWin(towerSize)){
+        val numberOfFirstStack = readLine("Enter number of first stack: ")
+        val numberOfSecondStack = readLine("Enter number of second stack: ")
+
+      }
+      x = readLine("If u want to exit press q: ")
     }
   }
 }
